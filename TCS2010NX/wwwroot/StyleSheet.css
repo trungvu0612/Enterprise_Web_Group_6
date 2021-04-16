@@ -35,7 +35,7 @@ a {
 .banner {
     background-attachment: fixed;
     background-color: #645862;
-    background-image: url(images/background_index.jpg);
+    background-image: url(~/images/background_index.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
