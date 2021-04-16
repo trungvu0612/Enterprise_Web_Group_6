@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TCS2010NX.Models.Topic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<link href="~/css/index_topic.css" rel="stylesheet" />
+
+<div class="container" style="margin-bottom: 30%">
+    <div class="topic_title">
+        <h1>Contributions</h1>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        @Html.DisplayNameFor(model => model.Title)
+        @Html.DisplayNameFor(model => model.Deadline_1)
+    </div>
+
+    <div class="main_topic">
+        @foreach (var item in Model)
+        {
+            <div class="main_topic-item">
+                <div class="main_topic-out">
+                    <div class="item_img">
+                        <img src="~/images/coursework.jpg" />
+                    </div>
+                    <div class="item_content">
+                        <div class="title">
+                            @Html.DisplayFor(modelItem => item.Title)
+                            @Html.DisplayFor(modelItem => item.Deadline_1)
+                        </div>
+
+                        <div class="item_content-edit">
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a asp-area="Staff" asp-controller="Contributions" asp-action="Index" asp-route-topicId="@item.Id">View Contributions</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

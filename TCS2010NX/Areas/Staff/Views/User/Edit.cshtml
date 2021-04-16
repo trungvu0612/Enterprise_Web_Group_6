@@ -1,0 +1,102 @@
+﻿@model TCS2010NX.Models.CUser
+
+@{ ViewData["Title"] = "Edit User"; }
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-action="Index">User Index</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+    </ol>
+</nav>
+
+<div class="container" style="margin-bottom: 30%">
+    <h5 class="mt-4 mb-4 text-center">@ViewData["Title"] (<em>@Model.UserName</em>)</h5>
+
+    <form asp-action="Edit" class="row" style="margin-bottom: 20%">
+        <div class="col-12 text-center">
+            <a asp-action="Index" class="btn btn-success">Back</a>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mt-5"></div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="NormalizedUserName" />
+        <input type="hidden" asp-for="NormalizedEmail" />
+        <input type="hidden" asp-for="EmailConfirmed" />
+        <input type="hidden" asp-for="PasswordHash" />
+        <input type="hidden" asp-for="SecurityStamp" />
+        <input type="hidden" asp-for="ConcurrencyStamp" />
+        <input type="hidden" asp-for="PhoneNumberConfirmed" />
+
+        <div class="col-12 col-lg-6 pl-4 pr-4 mt-5">
+            <h5 class="mb-4">Account Information</h5>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">Username</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TwoFactorEnabled" class="control-label">Two Factor Enabled</label>
+                <input asp-for="TwoFactorEnabled" class="form-control" />
+                <span asp-validation-for="TwoFactorEnabled" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LockoutEnd" class="control-label">Lockout End</label>
+                <input asp-for="LockoutEnd" class="form-control" />
+                <span asp-validation-for="LockoutEnd" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LockoutEnabled" class="control-label">Lockout Enabled</label>
+                <input asp-for="LockoutEnabled" class="form-control" />
+                <span asp-validation-for="LockoutEnabled" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AccessFailedCount" class="control-label">Access Failed Count</label>
+                <input asp-for="AccessFailedCount" class="form-control" />
+                <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 pl-4 pr-4 mt-5">
+            <h5 class="mb-4">Profile</h5>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

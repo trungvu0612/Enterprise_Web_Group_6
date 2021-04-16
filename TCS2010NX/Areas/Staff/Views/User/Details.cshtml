@@ -1,0 +1,183 @@
+﻿@model TCS2010NX.Models.CUser
+
+@{ ViewData["Title"] = "User Details"; }
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-action="Index">User Index</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+    </ol>
+</nav>
+
+<div class="container" style="margin-bottom: 30%">
+    <h5 class="mt-4 mb-4 text-center">@ViewData["Title"] (<em>@Model.UserName</em>)</h5>
+
+    <div class="text-center">
+        <a asp-action="Index" class="btn btn-success btn-sm">Back</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">Edit this user</a>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 pl-4 pr-4 mt-5">
+            <table class="table table-bordered">
+                <thead class="table-dark bg-success text-center">
+                    <tr>
+                        <th colspan="2">
+                            Profile
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.FirstName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LastName)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-12 col-lg-6 pl-4 pr-4 mt-5">
+            <table class="table table-bordered">
+                <thead class="table-dark bg-success text-center">
+                    <tr>
+                        <th colspan="2">
+                            Account Information
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            Username
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.UserName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Normalized Username
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.NormalizedUserName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Normalized Email
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.NormalizedEmail)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Email Confirmed
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.EmailConfirmed)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Password Hash
+                        </th>
+                        <td style="word-break: break-word;">
+                            @Html.DisplayFor(model => model.PasswordHash)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Security Stamp
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.SecurityStamp)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Concurrency Stamp
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ConcurrencyStamp)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Phone Number
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Phone Number Confirmed
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Two Factor Enabled
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.TwoFactorEnabled)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lockout End
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LockoutEnd)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lockout Enabled
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LockoutEnabled)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Access Failed Count
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.AccessFailedCount)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

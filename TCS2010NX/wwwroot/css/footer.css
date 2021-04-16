@@ -1,0 +1,15 @@
+﻿body .border-top .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+    body .border-top .container a {
+        font-size: 40px;
+        color: white;
+        text-decoration: none;
+    }
+
+body .border-top {
+    background: #15427d;
+}

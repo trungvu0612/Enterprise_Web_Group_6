@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TCS2010NX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+
+    <link href="~/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GreenSchool</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.IsInRole("Student"))
+                        {
+                    <li class="nav-item">
+                        <a class="navbar-brand" asp-area="" asp-controller="Topic" asp-action="Index">Submit</a>
+                    </li>}
+                        @if (User.IsInRole("Coordinator"))
+                        {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="Topic" asp-action="Index">Contributions</a>
+                    </li>}
+
+                        @if (User.IsInRole("Manager"))
+                        {
+                    <li class="nav-item" style="margin-left: 5px">
+                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="Topic" asp-action="Index">Contributions</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 5px">
+                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="Department" asp-action="Index">Department</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 5px">
+                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="User" asp-action="Index">User</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 5px">
+                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="Role" asp-action="Index">Role</a>
+                    </li>
+                    }
+                    @*addmin., ,manager..*@
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    @RenderBody()
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Greenschool</a>
+            <div class=""> <h4>TP. Hồ Chí Minh</h4> <p>CS1: 205 Nguyễn Xí, Phường 26, Bình Thạnh.</p> </div>
+            <div class=""> <h4>TP. Hà Nội</h4> <p>658 Ngô Quyền, quận Sơn Trà, TP Đà Nẵng</p> </div>
+            <div class="sdt">Contact: 083275672345</div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

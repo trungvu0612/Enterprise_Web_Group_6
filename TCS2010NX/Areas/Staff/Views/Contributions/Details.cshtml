@@ -1,0 +1,95 @@
+﻿@model TCS2010NX.Models.Contribution
+
+@{
+    ViewData["Title"] = "Details";
+
+    var comments = (List<Comment>)ViewData["Comments"];
+}
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="container" style="margin-bottom: 30%">
+
+    <h1>Details</h1>
+
+    <div>
+        <h4>Contribution</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Contributor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Contributor.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Topic)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Topic.Id)
+            </dd>
+        </dl>
+
+        @foreach (var file in Model.Files)
+        {
+            <div>
+                <a asp-action="DownloadFile" asp-route-fileId="@file.Id">
+                    @System.IO.Path.GetFileName(file.URL)
+                </a>
+            </div>
+        }
+
+
+
+        <form asp-action="Mark">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" name="contributionId" value="@Model.Id">
+
+            <div class="form-group">
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<ContributionStatus>()"
+                        name="contributionStatus" class="form-select"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Mark" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+
+
+
+        @if (comments != null)
+        {
+            foreach (var comment in comments)
+            {
+                <div>@comment.User.FirstName @comment.User.LastName (@comment.Date): @comment.Content</div>
+            }
+        }
+
+        <form asp-action="Comment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" name="contributionId" value="@Model.Id" />
+
+            <div class="form-group">
+                <input type="text" name="commentContent" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Comment" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>

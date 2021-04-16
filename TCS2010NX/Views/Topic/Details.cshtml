@@ -1,0 +1,97 @@
+@model TCS2010NX.Models.Topic
+
+@{
+    ViewData["Title"] = "Details";
+    var contribution = new Contribution();
+    var currentContribution = (Contribution)ViewData["currentContribution"];
+    var commets = (List<Comment>)ViewData["comments"];
+}
+<link href="~/css/chatbox.css" rel="stylesheet" />
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="container" style="margin-bottom: 30%">
+    <div class="topic_title">
+        <h1>Submit Contributions</h1>
+
+        <div>
+            <h4>Topic</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Deadline_1)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Deadline_1)
+                </dd>
+            </dl>
+
+            <div class="@(String.IsNullOrEmpty(ViewBag.Error) ?  "d-none" : "")">@ViewBag.Error</div>
+
+            @if (currentContribution == null)
+            {
+                <div>No submission yet.</div>
+            }
+            else
+            {
+                <div> Status: @currentContribution.Status</div>
+
+                foreach (var file in currentContribution.Files)
+                {
+                    <div>
+                        <a asp-action="DownloadFile" asp-route-fileId="@file.Id">
+                            @file.URL.Split("\\").Last()
+                        </a>
+                    </div>
+                }
+            }
+
+            <form asp-action="UpLoadFile" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type="hidden" asp-for="@contribution.Status" value="@ContributionStatus.Pending" />
+                <input type="hidden" asp-for="@contribution.ContributorId" value="@ViewBag.ContributorId" />
+                <input type="hidden" asp-for="@contribution.TopicId" value="@Model.Id" />
+
+
+
+                <div class="form-group">
+                    <input type="file" name="file" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="isAcceptTerms" value="true" class="form-control" style="height: 20px" /> Accept Terms and Conditions:
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="chatbox">
+                <div class="chat_item">
+                    @if (commets != null)
+                    {
+                        foreach (var comment in commets)
+                        {
+                            <div>@comment.User.FirstName @comment.User.LastName (@comment.Date): @comment.Content</div>
+                        }
+                    }
+                </div>
+
+                <form class="chat_content" asp-action="Comment">
+                    <input type="hidden" name="topicId" value="@Model.Id" />
+                    <input id="box" type="text" name="commentContent" />
+                    <button type="submit">Comment</button>
+                </form>
+
+            </div>
+
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

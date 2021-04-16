@@ -1,0 +1,99 @@
+﻿body {
+    background: #f0f2f5;
+}
+
+.container .topic_title {
+    text-align: center;
+    padding: 15px 20px;
+    margin: 0px 10px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.container .main_topic {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 20%;
+}
+
+    .container .main_topic .main_topic-item {
+        width: calc(100% / 3);
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+
+        .container .main_topic .main_topic-item .main_topic-out {
+            padding: 15px 20px;
+            margin: 0px 10px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+
+
+
+            .container .main_topic .main_topic-item .main_topic-out .item_img {
+                position: relative;
+                overflow: hidden;
+                height: 0;
+                padding-bottom: 80%;
+                border-radius: 10px;
+            }
+
+                .container .main_topic .main_topic-item .main_topic-out .item_img img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+            .container .main_topic .main_topic-item .main_topic-out .item_content {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+                .container .main_topic .main_topic-item .main_topic-out .item_content .title {
+                    font-weight: bold;
+                }
+
+                .container .main_topic .main_topic-item .main_topic-out .item_content .item_content-edit a {
+                    border: none;
+                    border-radius: 15px;
+                    color: white;
+                    padding: 10px 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 4px;
+                    cursor: pointer;
+                    color: black;
+                    transition: 0.4s;
+                }
+
+                    .container .main_topic .main_topic-item .main_topic-out .item_content .item_content-edit a:hover {
+                        background: #e6e6ff;
+                        transition: 0.4s;
+                    }
+
+
+
+@media (min-width:0px) and (max-width: 600px) {
+    .container .main_topic {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+        .container .main_topic .main_topic-item {
+            width: 100%;
+        }
+}

@@ -1,0 +1,46 @@
+﻿@model TCS2010NX.Models.Contribution
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="container" style="margin-bottom: 30%">
+    <h1>Create</h1>
+
+    <h4>Contribution</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <select asp-for="Status" class="form-control"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContributorId" class="control-label"></label>
+                    <select asp-for="ContributorId" class="form-control" asp-items="ViewBag.ContributorId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TopicId" class="control-label"></label>
+                    <select asp-for="TopicId" class="form-control" asp-items="ViewBag.TopicId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

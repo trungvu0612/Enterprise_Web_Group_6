@@ -1,0 +1,43 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{ ViewData["Title"] = "Edit Role"; }
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-action="Index">Role Index</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+    </ol>
+</nav>
+
+<div class="container" style="margin-bottom: 30%">
+    <h5 class="mt-4 mb-4 text-center">@ViewData["Title"] (<em>@Model.Id</em>)</h5>
+
+    <div class="row">
+        <form asp-action="Edit" class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 pr-0 pl-0">
+            <div class="text-center">
+                <a asp-action="Index" class="btn btn-success">Back</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mt-5"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="NormalizedName" />
+            <input type="hidden" asp-for="ConcurrencyStamp" />
+
+            <div class="form-group mt-5">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

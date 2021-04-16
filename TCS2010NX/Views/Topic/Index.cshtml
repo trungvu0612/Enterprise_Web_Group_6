@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TCS2010NX.Models.Topic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/css/index_topic.css" rel="stylesheet" />
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+
+<div class="banner" id="banner">
+    <div class="bg-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-text">
+                        <h2>Welcome to <span>FPT GREENWICH</span> Unversity</h2>
+                        <p>Joint training program between FPT University and Greenwich University, UK)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 30%">
+    <div class="topic_title">
+        <h1>Submit</h1>
+    </div>
+
+    <div class="main_topic">
+        @foreach (var item in Model)
+        {
+            <div class="main_topic-item">
+                <div class="main_topic-out">
+                    <div class="item_img">
+                        <img src="~/images/coursework.jpg" />
+                    </div>
+                    <div class="item_content">
+                        <div class="title">
+                            @Html.DisplayFor(modelItem => item.Title)
+                            @Html.DisplayFor(modelItem => item.Deadline_1)
+                        </div>
+
+                        <div class="item_content-edit">
+                            <a asp-action="Details" asp-route-id="@item.Id">Submit</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

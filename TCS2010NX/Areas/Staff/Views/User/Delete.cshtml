@@ -1,0 +1,44 @@
+﻿@model TCS2010NX.Models.CUser
+
+@{ ViewData["Title"] = "Delete User"; }
+<link href="~/css/component.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-action="Index">User Index</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+    </ol>
+</nav>
+
+<div class="container" style="margin-bottom: 30%">
+    <h5 class="mt-4 mb-2 text-center">@ViewData["Title"] (<em>@Model.UserName</em>)</h5>
+
+    <div class="row text-center">
+        <div class="col-12 pl-4 pr-4 mt-5">
+            <table class="table text-left mb-4">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                    <td>@Html.DisplayFor(model => model.FirstName)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                    <td>@Html.DisplayFor(model => model.LastName)</td>
+                </tr>
+            </table>
+
+            <h6>Are you sure you want to delete this?</h6>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+
+                <a asp-action="Index" class="btn btn-success mt-2">Back</a>
+                <input type="submit" value="Delete" class="btn btn-danger mt-2" />
+            </form>
+        </div>
+    </div>
+</div>
