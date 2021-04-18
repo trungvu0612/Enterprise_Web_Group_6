@@ -25,29 +25,35 @@
                         {
                     <li class="nav-item">
                         <a class="navbar-brand" asp-area="" asp-controller="Topic" asp-action="Index">Submit</a>
-                    </li>}
+                    </li>
+}
                         @if (User.IsInRole("Coordinator"))
                         {
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Staff" asp-controller="Topic" asp-action="Index">Contributions</a>
-                    </li>}
+                    </li>
+}
 
                         @if (User.IsInRole("Manager"))
                         {
                     <li class="nav-item" style="margin-left: 5px">
                         <a class="nav-link text-dark" asp-area="Staff" asp-controller="Topic" asp-action="Index">Contributions</a>
                     </li>
+                    }
+                        @if (User.IsInRole("Admin")) 
+                        { 
+                       
                     <li class="nav-item" style="margin-left: 5px">
                         <a class="nav-link text-dark" asp-area="Staff" asp-controller="Department" asp-action="Index">Department</a>
                     </li>
-                    <li class="nav-item" style="margin-left: 5px">
-                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="User" asp-action="Index">User</a>
-                    </li>
-                    <li class="nav-item" style="margin-left: 5px">
-                        <a class="nav-link text-dark" asp-area="Staff" asp-controller="Role" asp-action="Index">Role</a>
-                    </li>
-                    }
-                    @*addmin., ,manager..*@
+                        <li class="nav-item" style="margin-left: 5px">
+                            <a class="nav-link text-dark" asp-area="Staff" asp-controller="User" asp-action="Index">User</a>
+                        </li>
+                        <li class="nav-item" style="margin-left: 5px">
+                            <a class="nav-link text-dark" asp-area="Staff" asp-controller="Role" asp-action="Index">Role</a>
+                        </li>
+                        }
+                        @*addmin., ,manager..*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

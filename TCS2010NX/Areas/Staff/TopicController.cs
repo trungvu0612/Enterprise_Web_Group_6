@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ namespace TCS2010NX.Areas.Staff
         }
 
         // GET: Staff/Topic/Create
+        [Authorize (Roles="Coordinator")]
         public IActionResult Create()
         {
             return View();
@@ -72,6 +74,7 @@ namespace TCS2010NX.Areas.Staff
         }
 
         // GET: Staff/Topic/Edit/5
+        [Authorize(Roles = "Coordinator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -141,6 +144,7 @@ namespace TCS2010NX.Areas.Staff
         }
 
         // POST: Staff/Topic/Delete/5
+        [Authorize(Roles = "Coordinator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
